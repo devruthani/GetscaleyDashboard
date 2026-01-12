@@ -1,6 +1,6 @@
 import request from 'supertest'
 import { createApp } from '../../src/app.js'
-import { Admin } from '../../src/models/Admin.js'
+import { Admin } from '../../src/models/index.js'
 import bcrypt from 'bcryptjs'
 
 const app = createApp()
