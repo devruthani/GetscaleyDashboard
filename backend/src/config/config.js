@@ -28,7 +28,7 @@ export const config = {
   // Database configuration. Defaults to SQLite for local dev.
   db: {
     dialect: process.env.DB_DIALECT || 'sqlite', // 'sqlite' | 'postgres' | 'mysql' | 'mariadb' | 'mssql'
-    storage: process.env.DB_STORAGE || './data/dev.sqlite', // only used for sqlite
+    storage: (process.env.NODE_ENV === 'test') ? ':memory:' : (process.env.DB_STORAGE || './data/dev.sqlite'), // only used for sqlite
     host: process.env.DB_HOST || 'localhost',
     port: Number(process.env.DB_PORT || 5432),
     database: process.env.DB_NAME || 'getscaley',
@@ -62,4 +62,3 @@ export const config = {
     timezone: process.env.JOBS_TIMEZONE || 'UTC',
   },
 }
-
